@@ -2,6 +2,9 @@
   "name": "task-manager-api",
   "version": "1.0.0",
   "description": "",
+  "dependencies":{ 
+    "dotenv": "^16.0.3"
+  },
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
