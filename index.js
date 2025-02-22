@@ -7,12 +7,10 @@ const cors = require("cors");
 const app = express();
 app.use(express.json());  //middleware to pass json data
 app.use(cors());
-
+console.log("MONGODB_URI", process.env.MONGO_URI)
 // Connect to MongoDB
-mongoose.connect("mongodb://localhost:27017/taskmanager",{
-    useNewUrlParser:true,
-    useUnifiedTopology:true
-}).then(()=>{
+mongoose.connect(process.env.MONGO_URI)
+.then(()=>{
     console.log("Connected to MongoDB");
 }).catch(err => console.log(err));
 
