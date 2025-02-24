@@ -13,6 +13,20 @@ const getTasks = async (req, res) => {
     }
 };
 
+// get a task by id
+const getTaskById = async (req, res)=>{
+    const {id}=req.params
+    try{
+        const task = await Task.findById(id);
+        if (!task){
+            return res.status(404).json({error: "Task not found"});
+        }
+        res.json(task);
+    } catch(error){
+        res.status(500).json({ error: "Server Error"});
+    }
+};
+
 //new task
 const createTask = async (req, res) => {
     try {
@@ -56,4 +70,4 @@ const deleteTask = async (req, res) => {
 };
 
 // Correctly export functions
-module.exports = { getTasks, createTask, updateTask, deleteTask };
+module.exports = { getTasks, getTaskById, createTask, updateTask, deleteTask };
